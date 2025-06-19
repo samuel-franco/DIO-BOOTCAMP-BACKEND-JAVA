@@ -52,7 +52,7 @@ public class Main {
 
 ```
 
-## 1 Primeiro projeto - Simulando Uma Conta Bancária Através Do Terminal/Console
+## 1 Desafío de projeto - Simulando Uma Conta Bancária Através Do Terminal/Console
 
 Sintaxe - Desafio
 
@@ -176,6 +176,69 @@ public class ContaTerminal {
     }
 }
 ```
+---
+
+## 2 Segundo desafio de projeto - Criando Um Pequeno Sistema Para Validação de Processo Seletivo
+
+📄 ParametrosInvalidos.java
+```java
+package com.parametros.invalidos;
+
+public class ParametrosInvalidos extends Exception {
+	
+	public ParametrosInvalidos(String mensagem) {
+        super(mensagem);
+    }
+}
+```
+
+📄 Contador.java
+```java
+package contador;
+
+import java.util.Scanner;
+
+import com.parametros.invalidos.ParametrosInvalidos;
+
+public class Contador {
+    public static void main(String[] args) {
+        Scanner terminal = new Scanner(System.in);
+
+        System.out.println("Digite o primeiro parâmetro:");
+        int parametroUm = terminal.nextInt();
+
+        System.out.println("Digite o segundo parâmetro:");
+        int parametroDois = terminal.nextInt();
+
+        try {
+            // Chamando o método contendo a lógica de contagem
+            contar(parametroUm, parametroDois);
+        } catch (ParametrosInvalidos exception) {
+            // Imprimir a mensagem: O segundo parâmetro deve ser maior que o primeiro
+            System.out.println(exception.getMessage());
+        }
+
+        terminal.close();
+    }
+
+    static void contar(int parametroUm, int parametroDois) throws ParametrosInvalidos {
+        // Validar se parametroUm é MAIOR que parametroDois e lançar a exceção
+        if (parametroUm > parametroDois) {
+            throw new ParametrosInvalidos("O segundo parâmetro deve ser maior que o primeiro");
+        }
+
+        int contagem = parametroDois - parametroUm;
+
+        // Realizar o for para imprimir os números com base na variável contagem
+        for (int i = 1; i <= contagem; i++) {
+            System.out.println("Imprimindo o número " + i);
+        }
+    }
+}
+
+```
+
+
 
 
 
